@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="simple covid-19 estimator app" />
+    <title>covid-19 estimator</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+      :root {
+        --primary-color: #e31c38;
+        --secondary-color: #1ce3c7;
+        font-family: 'Roboto', sans-serif;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .region-info {
+        margin: 0.2em;
+        border: 0.5px solid var(--secondary-color);
+        border-radius: 2px;
+        padding: 0.5em;
+        font-size: small;
+        font-weight: bold;
+        background-color: var(--secondary-color);
+        border-radius: 45px;
+        color: #fff;
+        
+      }
+
+      select[name="region"] {
+          border: none;
+          border-radius: 45px;
+      }
+      .form div {
+        align-items: flex-start;
+      }
+
+      .form input,
+      .form select {
+        width: 200px;
+        margin: 0.5em;
+        border: 1px solid var(--secondary-color);
+        border-radius: 45px;
+      }
+
+      .form {
+        margin: 1em;
+        padding: 1.5em;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+      }
+
+      input::placeholder {
+        font-size: 12px;
+        text-align: center;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+
+      
+
+      .form button {
+        margin: 1em;
+        width: 140px;
+        height: 45px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 600;
+        color: #000;
+        background-color: #f5ecec;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .form button:hover {
+        background-color: var(--primary-color);
+        box-shadow: 0px 15px 20px rgba(229, 46, 55, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+      }
+
+      h3 {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      @media screen and (max-width: 768px) {
+        .row {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .region-info {
+          margin: 0.3em;
+          border: none;
+          border-radius: 45px;
+          padding: 0.5em;
+          font-weight: bold;
+          font-size: small;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>COVID-19 ESTIMATOR</h3>
+      <div class="row">
+        <span class="region-info">
+          <label for="region">Region</label>
+          <select name="region" id="region">
+            <option value="Africa">Africa</option>
+          </select>
+        </span>
+        <span class="region-info">
+          <span>Average Age :</span>
+          <span>19.7</span>
+        </span>
+        <span class="region-info">
+          <span>Average Daily Income :</span>
+          <span>5</span>
+        </span>
+        <span class="region-info">
+          <span>Average Daily Income Population :</span>
+          <span>0.71</span>
+        </span>
+      </div>
+
+      <div class="form">
+        <div>
+          <label for="population">Population</label>
+          <input
+            id="population"
+            name="population"
+            type="text"
+            data-population
+            placeholder="Enter number of population"
+            aria-placeholder="Enter number of population"
+          />
+        </div>
+
+        <div>
+          <label for="reportedCases">Reported Cases</label>
+          <input
+            id="reportedCases"
+            name="reportedCases"
+            type="text"
+            data-reported-cases
+            placeholder="Enter number of reported cases"
+            aria-placeholder="Enter number of reported cases"
+          />
+        </div>
+        <div>
+          <label for="totalHospitalBeds">Total Hospital Beds</label>
+          <input
+            id="totalHospitalBeds"
+            name="totalHospitalBeds"
+            type="text"
+            data-total-hospital-beds
+            placeholder="Enter total number of hospital beds"
+            aria-placeholder="Enter total number of hospital beds"
+          />
+        </div>
+        <div>
+          <label for="periodType">Period Type</label>
+          <select name="periodType" id="periodType">
+            <option value="days">days</option>
+            <option value="weeks">weeks</option>
+            <option value="months">months</option>
+          </select>
+          <label for="timeToElapse">Time to elapse</label>
+          <input
+            id="timeToElapse"
+            name="timeToElapse"
+            type="number"
+            placeholder="time to elapse"
+            data-time-to-elapse
+          />
+        </div>
+        <div>
+          <button data-go-estimate>ESTIMATE</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
